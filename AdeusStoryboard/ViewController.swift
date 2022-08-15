@@ -8,43 +8,52 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // MARK: - Inicialização das subviews (componentes)
+    // Inicialização dos componentes
+    let backgroundView = UIImageView(image: UIImage(named: "background"))
+    let logoView = UIImageView(image: UIImage(named: "logo-jogada"))
+    let diceView = UIImageView(image: UIImage(named: "dice-1"))
+    let playButton = UIButton(configuration: .filled())
+    
+    // Inicialização das views containers para uso na stack view
+    let logoContainer = UIView()
+    let diceContainer = UIView()
+    let playButtonContainer = UIView()
+    
+    // Inicialização da stack view
+    let stackView = UIStackView()
+    
+    // Inicialização do array de imagens para o dado
+    let diceImages = [UIImage(named: "dice-1"), UIImage(named: "dice-2"), UIImage(named: "dice-3"), UIImage(named: "dice-4"), UIImage(named: "dice-5"), UIImage(named: "dice-6")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        view.backgroundColor = .blue
+        setupViewsHierarchy()
+        setupViewsAttributes()
+        setupConstraints()
+        setupAdditionalConfiguration()
     }
     
-    override func loadView() {
-        // Inicialização da view que irá ser atribuída como view raiz do view controller
-        let view = UIView()
-        
-        // MARK: - Inicialização das subviews (componentes)
-        // Inicialização dos componentes
-        let backgroundView = UIImageView(image: UIImage(named: "background"))
-        let logoView = UIImageView(image: UIImage(named: "logo-jogada"))
-        let diceView = UIImageView(image: UIImage(named: "dice-1"))
-        let playButton = UIButton(configuration: .filled())
-        
-        // Inicialização das views containers para uso na stack view
-        let logoContainer = UIView()
-        let diceContainer = UIView()
-        let playButtonContainer = UIView()
-        
-        // Inicialização da stack view já com os containers adicionados
-        let stackView = UIStackView(arrangedSubviews: [logoContainer, diceContainer, playButtonContainer])
-        
+    func setupViewsHierarchy() {
         // MARK: - Setup na hierarquia das subviews
         // Adiciona a view do background e da stack view como subviews da view raiz
         view.addSubview(backgroundView)
         view.addSubview(stackView)
         
+        // Adiciona as views a stack view
+        stackView.addArrangedSubview(logoContainer)
+        stackView.addArrangedSubview(diceContainer)
+        stackView.addArrangedSubview(playButtonContainer)
+        
         // Adiciona os componentes aos seus respectivos containers (views)
         logoContainer.addSubview(logoView)
         diceContainer.addSubview(diceView)
         playButtonContainer.addSubview(playButton)
-        
+    }
+    
+    func setupViewsAttributes() {
         // MARK: - Configuração dos atributos dos componentes
         // Configura a stack view conforme o figma ou necessário
         stackView.axis = .vertical
@@ -61,7 +70,9 @@ class ViewController: UIViewController {
         backgroundView.contentMode = .scaleAspectFill
         logoView.contentMode = .scaleAspectFit
         diceView.contentMode = .scaleAspectFit
-        
+    }
+    
+    func setupConstraints() {
         // MARK: - Configuração das constraints de auto layout
         // Background
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -109,19 +120,17 @@ class ViewController: UIViewController {
             playButton.leadingAnchor.constraint(equalTo: playButtonContainer.leadingAnchor, constant: 16),
             playButton.heightAnchor.constraint(equalToConstant: 60)
         ])
-        
+    }
+    
+    func setupAdditionalConfiguration() {
         // MARK: - Outras configurações
         // Adiciona target para ação de toque no botão
         playButton.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
-        
-        // MARK: - Finalização
-        // Atribuição da view inicializada no começo da função, a qual inserimos todos os nossos componentes, como a view raiz do view controller
-        self.view = view
     }
     
     // MARK: - Função que é chamada quando o botão é tocado
     @objc func tappedButton(sender: UIButton) {
-        print("Botão foi pressionado")
+        diceView.image = diceImages[Int.random(in: 0...diceImages.count-1)]
     }
 }
 
