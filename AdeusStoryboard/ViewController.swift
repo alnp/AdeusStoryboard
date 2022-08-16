@@ -31,6 +31,7 @@ extension ViewController: DiceViewDelegate {
     func rollDices() {
         guard let randomImage = diceImages[Int.random(in: 0...diceImages.count-1)] else { return }
         diceView.configure(diceImage: randomImage)
+        diceView.setupViewsHierarchy()
     }
 }
 

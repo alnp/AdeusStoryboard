@@ -29,17 +29,25 @@ class DiceView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViewsHierarchy()
-        setupViewsAttributes()
-        setupConstraints()
-        setupAdditionalConfiguration()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupViewsHierarchy() {
+    // MARK: - Função que é chamada quando o botão é tocado
+    @objc private func tappedButton(sender: UIButton) {
+        delegate?.rollDices()
+    }
+    
+    func configure(diceImage: UIImage) {
+        diceView.image = diceImage
+    }
+}
+
+extension DiceView: ViewCodeProtocol {
+    func setupViewsHierarchy() {
         // MARK: - Setup na hierarquia das subviews
         // Adiciona a view do background e da stack view como subviews da view raiz
         addSubview(backgroundView)
@@ -56,7 +64,7 @@ class DiceView: UIView {
         playButtonContainer.addSubview(playButton)
     }
     
-    private func setupViewsAttributes() {
+    func setupViewsAttributes() {
         // MARK: - Configuração dos atributos dos componentes
         // Configura a stack view conforme o figma ou necessário
         stackView.axis = .vertical
@@ -82,7 +90,7 @@ class DiceView: UIView {
         diceView.contentMode = .scaleAspectFit
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         // MARK: - Configuração das constraints de auto layout
         // Background
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -132,19 +140,10 @@ class DiceView: UIView {
         ])
     }
     
-    private func setupAdditionalConfiguration() {
+    func setupAdditionalConfiguration() {
         // MARK: - Outras configurações
         // Adiciona target para ação de toque no botão
         playButton.addTarget(self, action: #selector(tappedButton), for: .touchUpInside)
-    }
-    
-    // MARK: - Função que é chamada quando o botão é tocado
-    @objc private func tappedButton(sender: UIButton) {
-        delegate?.rollDices()
-    }
-    
-    func configure(diceImage: UIImage) {
-        diceView.image = diceImage
     }
 }
 
