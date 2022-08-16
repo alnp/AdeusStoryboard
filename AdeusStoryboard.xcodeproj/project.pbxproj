@@ -64,19 +64,67 @@
 		BE2B4B2A289C594E00C59630 /* AdeusStoryboard */ = {
 			isa = PBXGroup;
 			children = (
-				BE2B4B2B289C594E00C59630 /* AppDelegate.swift */,
-				BE2B4B2D289C594E00C59630 /* SceneDelegate.swift */,
-				BE2B4B2F289C594E00C59630 /* ViewController.swift */,
-				BE7E7C5D28AACDF200375E4E /* DiceView.swift */,
-				BE7E7C5F28ABC88000375E4E /* DiceViewDelegate.swift */,
-				BE7E7C6128ABD6B800375E4E /* ViewCodeProtocol.swift */,
+				BE7E7C6B28ABE05E00375E4E /* Application */,
+				BE7E7C6A28ABE03600375E4E /* Views */,
+				BE7E7C6828ABE00500375E4E /* Controllers */,
+				BE7E7C6928ABE01500375E4E /* Protocols */,
+				BE7E7C6728ABDFEE00375E4E /* Preview Extensions */,
+				BE7E7C6328ABDF4800375E4E /* Supporting Files */,
+			);
+			path = AdeusStoryboard;
+			sourceTree = "<group>";
+		};
+		BE7E7C6328ABDF4800375E4E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				BE2B4B34289C595100C59630 /* Assets.xcassets */,
 				BE2B4B36289C595100C59630 /* LaunchScreen.storyboard */,
 				BE2B4B39289C595100C59630 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE7E7C6728ABDFEE00375E4E /* Preview Extensions */ = {
+			isa = PBXGroup;
+			children = (
 				BE5A4D8428A5772700FF9CBA /* UIView+Preview.swift */,
 				BE5A4D8628A5774000FF9CBA /* UIViewController+Preview.swift */,
 			);
-			path = AdeusStoryboard;
+			path = "Preview Extensions";
+			sourceTree = "<group>";
+		};
+		BE7E7C6828ABE00500375E4E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BE2B4B2F289C594E00C59630 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BE7E7C6928ABE01500375E4E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BE7E7C6128ABD6B800375E4E /* ViewCodeProtocol.swift */,
+				BE7E7C5F28ABC88000375E4E /* DiceViewDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BE7E7C6A28ABE03600375E4E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BE7E7C5D28AACDF200375E4E /* DiceView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BE7E7C6B28ABE05E00375E4E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BE2B4B2B289C594E00C59630 /* AppDelegate.swift */,
+				BE2B4B2D289C594E00C59630 /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
