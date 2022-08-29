@@ -7,9 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DiceViewController: UIViewController {
     
     let diceView = DiceView()
+    var viewModel: DiceViewModel
     
     // Inicialização do array de imagens para o dado
     let diceImages = [UIImage(named: "dice-1"),
@@ -18,20 +19,35 @@ class ViewController: UIViewController {
                       UIImage(named: "dice-4"),
                       UIImage(named: "dice-5"),
                       UIImage(named: "dice-6")]
-
+    
+    init(viewModel: DiceViewModel = DiceViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view = diceView
         diceView.delegate = self
+        viewModel.delegate = self
+    }
+    
+}
+
+extension DiceViewController: DiceViewDelegate {
+    func rollDices() {
+        viewModel.updateDiceValue()
     }
 }
 
-extension ViewController: DiceViewDelegate {
-    func rollDices() {
-        guard let randomImage = diceImages[Int.random(in: 0...diceImages.count-1)] else { return }
-        diceView.configure(diceImage: randomImage)
-        diceView.setupViewsHierarchy()
+extension DiceViewController: DiceViewModelDelegate {
+    func updateDiceView(to value: Int) {
+        self.diceView.configure(diceImage: self.diceImages[value-1] ?? UIImage())
     }
 }
 
@@ -44,8 +60,8 @@ struct ViewController_Preview: PreviewProvider {
     static var previews: some View {
         // view controller using programmatic UI
         Group {
-            ViewController().showPreview().previewDevice("iPhone 13")
-            ViewController().showPreview().previewDevice("iPhone 13").previewInterfaceOrientation(.landscapeLeft)
+            DiceViewController().showPreview().previewDevice("iPhone 13")
+            DiceViewController().showPreview().previewDevice("iPhone 13").previewInterfaceOrientation(.landscapeLeft)
         }
     }
 }
