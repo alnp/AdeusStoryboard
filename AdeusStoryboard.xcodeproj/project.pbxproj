@@ -14,6 +14,8 @@
 		BE2B4B38289C595100C59630 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE2B4B36289C595100C59630 /* LaunchScreen.storyboard */; };
 		BE5A4D8528A5772700FF9CBA /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5A4D8428A5772700FF9CBA /* UIView+Preview.swift */; };
 		BE5A4D8728A5774000FF9CBA /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5A4D8628A5774000FF9CBA /* UIViewController+Preview.swift */; };
+		BEA883D428C77D1000B5FA43 /* DicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA883D328C77D1000B5FA43 /* DicesView.swift */; };
+		BEA883D628C7828400B5FA43 /* DicesViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA883D528C7828400B5FA43 /* DicesViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		BE2B4B39289C595100C59630 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE5A4D8428A5772700FF9CBA /* UIView+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
 		BE5A4D8628A5774000FF9CBA /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
+		BEA883D328C77D1000B5FA43 /* DicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicesView.swift; sourceTree = "<group>"; };
+		BEA883D528C7828400B5FA43 /* DicesViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicesViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				BE2B4B2B289C594E00C59630 /* AppDelegate.swift */,
 				BE2B4B2D289C594E00C59630 /* SceneDelegate.swift */,
 				BE2B4B2F289C594E00C59630 /* ViewController.swift */,
+				BEA883D328C77D1000B5FA43 /* DicesView.swift */,
+				BEA883D528C7828400B5FA43 /* DicesViewDelegate.swift */,
 				BE2B4B34289C595100C59630 /* Assets.xcassets */,
 				BE2B4B36289C595100C59630 /* LaunchScreen.storyboard */,
 				BE2B4B39289C595100C59630 /* Info.plist */,
@@ -143,6 +149,8 @@
 				BE5A4D8528A5772700FF9CBA /* UIView+Preview.swift in Sources */,
 				BE2B4B30289C594E00C59630 /* ViewController.swift in Sources */,
 				BE2B4B2C289C594E00C59630 /* AppDelegate.swift in Sources */,
+				BEA883D428C77D1000B5FA43 /* DicesView.swift in Sources */,
+				BEA883D628C7828400B5FA43 /* DicesViewDelegate.swift in Sources */,
 				BE2B4B2E289C594E00C59630 /* SceneDelegate.swift in Sources */,
 				BE5A4D8728A5774000FF9CBA /* UIViewController+Preview.swift in Sources */,
 			);
