@@ -9,85 +9,33 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let dicesView = DicesView()
+    
+    let dicesImages = [UIImage(named: "dice-1"),
+                       UIImage(named: "dice-2"),
+                       UIImage(named: "dice-3"),
+                       UIImage(named: "dice-4"),
+                       UIImage(named: "dice-5"),
+                       UIImage(named: "dice-6")]
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        view.backgroundColor = .blue
+        self.view = dicesView
+        dicesView.delegate = self
     }
-    
-    override func loadView() {
-        // Inicialização da view que irá ser atribuída como view raiz do view controller
-        let view = UIView()
-        
-        // MARK: - Inicialização dos componentes
-        let backgroundView = UIImageView(image: UIImage(named: "background"))
-        let logoView = UIImageView()
-        let diceView = UIImageView()
-        let playButton = UIButton(configuration: .filled())
-        
-        let logoContainer = UIView()
-        let diceContainer = UIView()
-        let playButtonContainer = UIView()
-        
-        //        let stackView = UIStackView(arrangedSubviews: [logoContainer, diceContainer, playButtonContainer])
-        let stackView = UIStackView()
-        
-        // MARK: - Setup na hierarquia das views
-        view.addSubview(backgroundView)
-        view.addSubview(stackView)
-        
-        stackView.addArrangedSubview(logoContainer)
-        stackView.addArrangedSubview(diceContainer)
-        stackView.addArrangedSubview(playButtonContainer)
-        
-        logoContainer.addSubview(logoView)
-        diceContainer.addSubview(diceView)
-        playButtonContainer.addSubview(playButton)
-        
-        
-        // MARK: - Configuração dos atributos dos componentes
-        backgroundView.contentMode = .scaleAspectFill
-        
-        logoView.image = UIImage(named: "logo-jogada")
-        diceView.image = UIImage(named: "dice-1")
-        
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = 32
-        
-        
-        // MARK: - Configuração das constraints de auto layout
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
-        logoView.translatesAutoresizingMaskIntoConstraints = false
-        
-        diceView.translatesAutoresizingMaskIntoConstraints = false
-        
-        playButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        
-        // Atribuição da view inicializada no começo da função
-        self.view = view
-    }
-    
+
 }
+
+extension ViewController: DicesViewDelegate {
+    func rollDices() {
+        let randomNumber = Int.random(in: 0...dicesImages.count-1)
+        dicesView.configure(image: dicesImages[randomNumber])
+    }
+
+}
+
 
 // MARK: - Preview
 #if DEBUG
